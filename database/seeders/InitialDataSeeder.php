@@ -18,10 +18,19 @@ class InitialDataSeeder extends Seeder
     public function run(): void
     {
         // 1. --- CREATE ADMIN USER (ID 1) ---
-        // This ensures the first user is the admin needed by AdminMiddleware
-        DB::statement('DELETE FROM users;');
-        DB::statement('UPDATE sqlite_sequence SET seq = 0 WHERE name = "users";');
+        // Clear all existing data from tables first.
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('users')->truncate();
+        DB::table('services')->truncate();
+        DB::table('portfolios')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
+        // Check if the database driver is MySQL and reset the auto-increment counter manually
+        if (DB::getDriverName() == 'mysql') {
+            DB::statement('ALTER TABLE users AUTO_INCREMENT = 1;');
+        }
+        
+        // This ensures the first user is the admin needed by AdminMiddleware
         User::create([
             'name' => 'Luxe Stone Admin',
             'email' => 'admin@luxestone.com',

@@ -6,20 +6,41 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
-    // ... existing code ...
+    /**
+     * The application's global HTTP middleware stack.
+     *
+     * These middleware are run during every request to your application.
+     *
+     * @our array<int, class-string|string>
+     */
+    protected $middleware = [
+        // \App\Http\Middleware\TrustHosts::class,
+        \App\Http\Middleware\TrustProxies::class,
+        \Illuminate\Http\Middleware\HandleCors::class,
+        \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        \Illuminate\Foundation\Http\Middleware\TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+    ];
 
     /**
      * The application's route middleware groups.
      *
-     * @var array<string, array<int, string>>
+     * @our array<string, array<int, class-string|string>>
      */
     protected $middlewareGroups = [
         'web' => [
-            // ... existing web middleware ...
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
         'api' => [
-            // ... existing api middleware ...
+            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
 
@@ -28,12 +49,17 @@ class Kernel extends HttpKernel
      *
      * These middleware may be assigned to groups or used individually.
      *
-     * @var array<string, class-string|string>
+     * @our array<string, class-string|string>
      */
     protected $routeMiddleware = [
-        // ... existing route middleware (like 'auth', 'guest', etc.) ...
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'password.confirm' => \Illuminate\Auth\Middleware\RequirePasswordConfirmation::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         
-        // --- MANDATORY FIX: REGISTER ADMIN MIDDLEWARE HERE ---
+        // **THIS IS THE FIX**
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
     ];
 }

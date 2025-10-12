@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // In the up() method
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // e.g., Kitchen Worktops
-            $table->string('slug')->unique(); // for URL, e.g., kitchen-worktops
+            $table->string('title');
+            $table->string('slug')->unique();
             $table->string('subtitle')->nullable(); 
             $table->text('description')->nullable();
-            $table->string('hero_image_url')->nullable(); // URL for the hero image
-            $table->string('icon_svg_path')->nullable(); // Stores the SVG icon code
+            $table->string('hero_image_url')->nullable(); 
+            // FIX: Changed from string to text to hold larger SVG data
+            $table->text('icon_svg_path')->nullable(); 
             $table->timestamps();
         });
     }
