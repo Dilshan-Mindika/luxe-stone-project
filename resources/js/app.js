@@ -1,4 +1,3 @@
-// dilshan-mindika/luxe-stone-project/luxe-stone-project-7ec05f340f99f1c136300ba06e7774d45ca865e0/resources/js/app.js
 
 import './bootstrap';
 import Alpine from 'alpinejs';
