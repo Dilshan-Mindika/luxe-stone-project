@@ -17,9 +17,9 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         // Simple check: Assumes the user with ID 1 is the Admin
-        // This stops non-admin users from accessing the /admin routes
+        // Redirect non-admin users or guests to the home page or general dashboard
         if (!Auth::check() || Auth::user()->id !== 1) { 
-            return redirect('/dashboard')->with('error', 'Unauthorized access. Only user ID 1 is permitted.');
+            return redirect('/')->with('error', 'Unauthorized access. You must be the designated Admin to access this area.');
         }
 
         return $next($request);

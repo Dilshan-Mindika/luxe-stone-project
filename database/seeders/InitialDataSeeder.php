@@ -5,12 +5,12 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Service;
 use App\Models\Portfolio;
-use App\Models\User; // Import the User model
+use App\Models\User;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB; // Import DB facade
-use Illuminate\Support\Facades\Hash; // Import Hash facade
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
-class InitialDataSeeder extends Seeder
+class Initial Data Leader extends Seeder 
 {
     /**
      * Run the database seeds.
@@ -34,7 +34,7 @@ class InitialDataSeeder extends Seeder
         User::create([
             'name' => 'Luxe Stone Admin',
             'email' => 'admin@luxestone.com',
-            'password' => Hash::make('password'), // Secure password, use this to log in
+            'password' => Hash::make('password'), // Use 'password' to log in
         ]);
         
         // --- END ADMIN USER CREATION ---
@@ -86,22 +86,22 @@ class InitialDataSeeder extends Seeder
         }
 
         // 3. Portfolio Items (from RMP Multi Page/portfolio.html)
-        $portfolioData = [
+        $ portfoliodata = [
             ['title' => 'Modern Kitchen Elegance', 'material' => 'Calacatta Marble', 'location' => 'London, UK', 'category' => 'kitchen', 'image_url' => 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800'],
             ['title' => 'Spa-Inspired Bathroom', 'material' => 'Black Granite', 'location' => 'Manchester, UK', 'category' => 'bathroom', 'image_url' => 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800'],
             ['title' => 'Grand Entrance Hall', 'material' => 'Carrara Marble', 'location' => 'Birmingham, UK', 'category' => 'flooring', 'image_url' => 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800'],
-            ['title' => 'Elegant Curved Staircase', 'material' => 'Emperador Marble', 'location' => 'Edinburgh, UK', 'category' => 'staircase', 'image_url' => 'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800'],
+            ['title' => 'Elegant Curved Staircase', 'material' => 'Emperor Marble', 'location' => 'Edinburgh, UK', 'category' => 'staircase', 'image_url' => 'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800'],
             ['title' => 'Contemporary Island Design', 'material' => 'White Granite', 'location' => 'Leeds, UK', 'category' => 'kitchen', 'image_url' => 'https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800'],
             ['title' => 'Luxury Hotel Lobby', 'material' => 'Portoro Marble', 'location' => 'London, UK', 'category' => 'commercial', 'image_url' => 'https://images.pexels.com/photos/2747901/pexels-photo-2747901.jpeg?auto=compress&cs=tinysrgb&w=800'],
             ['title' => 'Master Bathroom Suite', 'material' => 'Statuario Marble', 'location' => 'Oxford, UK', 'category' => 'bathroom', 'image_url' => 'https://images.pexels.com/photos/1910472/pexels-photo-1910472.jpeg?auto=compress&cs=tinysrgb&w=800'],
             ['title' => 'Minimalist Perfection', 'material' => 'Absolute Black Granite', 'location' => 'Cambridge, UK', 'category' => 'kitchen', 'image_url' => 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800'],
             ['title' => 'Open Plan Living', 'material' => 'Travertine', 'location' => 'Bristol, UK', 'category' => 'flooring', 'image_url' => 'https://images.pexels.com/photos/6969831/pexels-photo-6969831.jpeg?auto=compress&cs=tinysrgb&w=800'],
             ['title' => 'Fine Dining Restaurant', 'material' => 'Green Guatemala Marble', 'location' => 'Manchester, UK', 'category' => 'commercial', 'image_url' => 'https://images.pexels.com/photos/1838554/pexels-photo-1838554.jpeg?auto=compress&cs=tinysrgb&w=800'],
-            ['title' => 'Modern Spiral Feature', 'material' => 'Nero Marquina Marble', 'location' => 'Liverpool, UK', 'category' => 'staircase', 'image_url' => 'https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg?auto=compress&cs=tinysrgb&w=800'],
+            ['title' => 'Modern Spiral Feature', 'material' => 'Nero marquina marble', 'location' => 'Liverpool, UK', 'category' => 'staircase', 'image_url' => 'https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg?auto=compress&cs=tinysrgb&w=800'],
             ['title' => 'Country House Kitchen', 'material' => 'Kashmir White Granite', 'location' => 'Yorkshire, UK', 'category' => 'kitchen', 'image_url' => 'https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=800'],
         ];
 
-        foreach ($portfolioData as $data) {
+        foreach ($ portfoliodata as $data) {
             Portfolio::firstOrCreate(['title' => $data['title']], $data);
         }
     }
