@@ -6,7 +6,7 @@
 <header class="sticky-header">
     <nav class="nav-container">
         <div class="logo">
-            <h2>LUXE STONE</h2>
+            <h2>RMP Marble & Graphine LTD</h2>
         </div>
         <ul class="nav-menu">
             <li><a href="{{ route('home') }}" class="nav-link @if(request()->is('/')) active @endif">Home</a></li>

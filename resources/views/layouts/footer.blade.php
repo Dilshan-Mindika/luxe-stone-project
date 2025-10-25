@@ -2,7 +2,9 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-col">
-                <h3>LUXE STONE</h3>
+                <h3>RMP Marble & Graphine LTD
+                    
+                </h3>
                 <p>Crafting luxury with premium marble and granite since 1999. Your trusted partner for exceptional stone solutions.</p>
             </div>
             <div class="footer-col">
@@ -32,7 +34,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© {{ date('Y') }} Luxe Stone. All rights reserved.</p>
+            <p>© {{ date('Y') }} RMP Marble & Graphine LTD. All rights reserved.</p>
         </div>
     </div>
 </footer>
